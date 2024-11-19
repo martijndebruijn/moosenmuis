@@ -1,6 +1,109 @@
 <html>
+<head>
+    <title>Moos en Muis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css">
+    <style>
+        body {
+            background-image: url("./background.png");
+            background-size: cover;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
 
+        }
+
+        .intro {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            font-size: larger;
+            text-align: center;
+        }
+
+        .author {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .author img {
+            margin-bottom: 1rem;
+        }
+
+        .book {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+            margin-top: 40px;
+            max-width: 100vw;
+        }
+
+        .content-container {
+            max-width: 700px;
+
+        }
+
+        .form {
+
+        }
+
+        input {
+            padding: 8px;
+        }
+
+        textarea {
+            padding: 8px;
+        }
+        button {
+            padding: 8px;
+        }
+    </style>
+</head>
 <body>
-Moos en Muis
+<div class="row">
+<!--    <div class="bg-contain bg-center bg-no-repeat bg-primary border-round h-20rem w-full" style="background-image: url('cover.png');"></div>-->
+        <img class="book" src="cover.png" alt="Boek cover">
+</div>
+<div class="content-container">
+    <div class="intro">
+        <p>Een leuk kinderboek over het ontdekken van je eigen talent en over echte vriendschap.</p>
+        <p>Nu te koop voor 14,95 excl. verzendkosten via onderstaand formulier.</p>
+    </div>
+    <div class="grid">
+        <div class="author col-12 md:col-6">
+            <img class="avatar" src="lizzy.jpg" alt="Foto Lizzy" width="200">
+            <div>Lizzy de Bruijn, auteur</div>
+        </div>
+        <div class="author col-12 md:col-6">
+            <img class="avatar" src="mette.jpg" alt="Foto Mette" width="200">
+            <div>Mette van Straaten, illustrator</div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="form-container grid">
+            <div class="col-1"></div>
+            <form action="https://formspree.io/f/xrbglkqa" method="POST" class="form col-10">
+                <div class="field">
+                    <label for="email">Uw email-adres:</label>
+                    <input id="email" name="email" type="email" class="w-full">
+                </div>
+                <div class="field">
+                    <label for="message">Bericht</label>
+                    <textarea id="message" name="message" class="w-full" rows="4"></textarea>
+                </div>
+                <div class="flex justify-content-end w-full">
+                    <button type="submit">Versturen</button>
+                </div>
+            </form>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
