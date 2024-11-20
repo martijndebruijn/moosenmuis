@@ -28,18 +28,21 @@
         }
 
         .author {
-            text-align: center;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            /*text-align: center;*/
             margin-top: 3rem;
-            margin-bottom: 3rem;
         }
 
         .author img {
-            margin-bottom: 1rem;
+            margin-right: 1rem;
         }
 
         .book {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
             margin-top: 40px;
+            margin-bottom: 40px;
             max-width: 100vw;
         }
 
@@ -47,7 +50,9 @@
             max-width: 700px;
 
         }
-
+        .author-container {
+            margin-bottom: 6rem;
+        }
         .form {
 
         }
@@ -71,18 +76,34 @@
 </div>
 <div class="content-container">
     <div class="intro">
-        <p>Een leuk kinderboek over het ontdekken van je eigen talent en over echte vriendschap.</p>
-        <p>Nu te koop voor 14,95 excl. verzendkosten via onderstaand formulier.</p>
+        <p>Moos de schildpad is verdrietig. Hij denkt dat hij niets goed kan.<br/>
+            Maar dan neemt Muis hem mee op pad.<br/>
+            Zouden ze samen ontdekken waar Moos goed in is?<br/><br/>
+
+            <i>&#39;Moos en Muis&#39;</i> is een vrolijk kinderboek over het ontdekken van je eigen talenten en het
+            belang van echte vriendschap.</p>
     </div>
-    <div class="grid">
-        <div class="author col-12 md:col-6">
-            <img class="avatar" src="lizzy.jpg" alt="Foto Lizzy" width="200">
-            <div>Lizzy de Bruijn, auteur</div>
+    <div class="grid author-container">
+        <div class="author col-12 md:col-12">
+            <img class="avatar" src="lizzy.jpg" alt="Foto Lizzy" width="150">
+            <div><b>Lizzy de Bruijn (2006)</b> is de schrijver van <i>&#39;Moos en Muis&#39;</i>. Ze vindt het
+                belangrijk dat kinderen de wereld vol zelfvertrouwen tegemoet treden en
+                trots mogen zijn op wie ze zijn!</div>
         </div>
-        <div class="author col-12 md:col-6">
-            <img class="avatar" src="mette.jpg" alt="Foto Mette" width="200">
-            <div>Mette van Straaten, illustrator</div>
+        <div class="author col-12 md:col-12">
+            <img class="avatar" src="mette.jpg" alt="Foto Mette" width="150">
+            <div><b>Mette van Straaten (2006)</b> is de illustrator van <i>&#39;Moos en Muis&#39;</i>. Met haar
+                tekeningen wil ze de wereld zowel magisch als overzichtelijk maken voor
+                kinderen, zodat zij hun eigen ervaringen er in kunnen herkennen.</div>
         </div>
+    </div>
+
+    <div class="intro">
+        <h1>Een boek bestellen?</h1>
+        <p>Vul onderstaand formulier in en maak &euro;14,95 + &euro;4,95 verzendkosten over op:<br/>
+            NL32 RABO 0127 1565 85<br/>
+            t.n.v. M. Vaandrager
+        </p>
     </div>
 
     <div class="">
@@ -90,11 +111,31 @@
             <div class="col-1"></div>
             <form action="https://formspree.io/f/xrbglkqa" method="POST" class="form col-10">
                 <div class="field">
+                    <label for="naam">Naam:</label>
+                    <input id="naam" name="naam" type="text" maxlength="255" class="w-full">
+                </div>
+                <div class="field">
+                    <label for="naam">Straat + huisnummer:</label>
+                    <input id="straat" name="straat" type="text" maxlength="255" class="w-full">
+                </div>
+                <div class="field">
+                    <label for="naam">Postcode:</label>
+                    <input id="postcode" name="postcode" type="text" maxlength="25" class="w-full">
+                </div>
+                <div class="field">
+                    <label for="naam">Plaats:</label>
+                    <input id="plaats" name="plaats" type="text" maxlength="255" class="w-full">
+                </div>
+                <div class="field">
                     <label for="email">Uw email-adres:</label>
                     <input id="email" name="email" type="email" class="w-full">
                 </div>
                 <div class="field">
-                    <label for="message">Bericht</label>
+                    <label for="aantalBoeken">Aantal boeken:</label>
+                    <input id="aantalBoeken" name="aantalBoeken" type="number" class="w-full" value="1">
+                </div>
+                <div class="field">
+                    <label for="message">Opmerkingen</label>
                     <textarea id="message" name="message" class="w-full" rows="4"></textarea>
                 </div>
                 <div class="flex justify-content-end w-full">
