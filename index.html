@@ -4,6 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="jquery-3.7.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css">
     <style>
@@ -56,6 +57,10 @@
         .form {
 
         }
+        .totaalBedrag {
+            font-weight: bold;
+            font-size: larger;
+        }
 
         input {
             padding: 8px;
@@ -100,9 +105,10 @@
 
     <div class="intro">
         <h1>Het boek bestellen?</h1>
-        <p>Vul onderstaand formulier in en maak &euro;14,95 <small><i>(+ &euro;4,95 verzendkosten als je het boek opgestuurd wil hebben)</i></small> over op:<br/>
+        <p>Vul onderstaand formulier in en maak &euro;14,95 over op:<br/>
             NL32 RABO 0127 1565 85<br/>
-            t.n.v. M. Vaandrager
+            t.n.v. M. Vaandrager<br/>
+            onder vermelding van 'Moos en Muis' + je naam<br/>
         </p>
     </div>
 
@@ -132,11 +138,24 @@
                 </div>
                 <div class="field">
                     <label for="aantalBoeken">Aantal boeken:</label>
-                    <input id="aantalBoeken" name="aantalBoeken" type="number" class="w-full" value="1">
+                    <input id="aantalBoeken" name="aantalBoeken" type="number" class="w-full" value="1"}>
+                </div>
+                <div class="field">
+                    <label>Laten bezorgen:</label>
+                    <div>
+                        <input type="radio" id="nee" name="bezorgen" value="nee" checked>
+                        <label for="nee">Nee</label><br>
+                        <input type="radio" id="ja" name="bezorgen" value="ja">
+                        <label for="ja">Ja  (&euro;4,95 verzendkosten)</label><br>
+                    </div>
                 </div>
                 <div class="field">
                     <label for="message">Opmerkingen</label>
                     <textarea id="message" name="message" class="w-full" rows="4"></textarea>
+                </div>
+                <div class="field">
+                    <div class="totaalBedrag"><span>Totaal bedrag: &euro;: </span><span id="totaalBedragScreen"></span></div>
+                    <input id="totaalBedrag" name="totaalBedrag" type="hidden" class="w-full">
                 </div>
                 <div class="flex justify-content-end w-full">
                     <button type="submit">Versturen</button>
@@ -144,6 +163,31 @@
             </form>
             <div class="col-1"></div>
         </div>
+        <script>
+            function calculate() {
+                const aantalBoeken = document.getElementById('aantalBoeken').value;
+                const bezorgenJaChecked = document.querySelector('input[name="bezorgen"][value="ja"]').checked;
+                const bookPrice = 14.95;
+                const deliveryCharge = 4.95;
+
+                let total = aantalBoeken * bookPrice;
+                if (bezorgenJaChecked) {
+                    total += deliveryCharge;
+                }
+                    document.getElementById('totaalBedragScreen').textContent = total.toFixed(2);
+                    document.getElementById('totaalBedrag').value = total.toFixed(2);
+
+            }
+
+// Attach the calculate function to relevant input events
+            document.getElementById('aantalBoeken').addEventListener('input', calculate);
+            const bezorgenRadios = document.querySelectorAll('input[name="bezorgen"]');
+            bezorgenRadios.forEach(radio => radio.addEventListener('change', calculate));
+
+// Calculate initially in case default values need a total calculation
+            calculate();
+
+        </script>
     </div>
 </div>
 </body>
